@@ -73,14 +73,14 @@ export default function Trendings() {
               alt={gif.title}
               className="w-full h-auto"
             />
-            {/* <div className="p-2 text-sm">
+            <div className="absolute p-2 text-sm">
               <p className="font-semibold truncate">
-                {gif.title || "Untitled"}
+                {gif?.title || "Untitled"}
               </p>
               <p className="text-gray-500">
-                Rating: {gif.rating.toUpperCase()}
+                Rating: {gif?.rating.toUpperCase()}
               </p>
-            </div> */}
+            </div>
           </div>
         ))}
       </div>

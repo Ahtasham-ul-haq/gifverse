@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Loader2 } from "lucide-react";
+import Link from "next/link";
 
 export default function Trendings() {
   const [gifs, setGifs] = useState<any[]>([]);
@@ -66,21 +67,13 @@ export default function Trendings() {
         {gifs.map((gif) => (
           <div
             key={gif.id}
-            className="break-inside-avoid rounded shadow overflow-hidden bg-white"
+            className="break-inside-avoid pb-4 rounded shadow overflow-hidden bg-white"
           >
             <img
               src={gif.images.fixed_width.url}
               alt={gif.title}
-              className="w-full h-auto"
+              className="w-full h-auto bg-slate-600 rounded-md"
             />
-            <div className="absolute p-2 text-sm">
-              <p className="font-semibold truncate">
-                {gif?.title || "Untitled"}
-              </p>
-              <p className="text-gray-500">
-                Rating: {gif?.rating.toUpperCase()}
-              </p>
-            </div>
           </div>
         ))}
       </div>

@@ -67,13 +67,36 @@ export default function Trendings() {
         {gifs.map((gif) => (
           <div
             key={gif.id}
-            className="break-inside-avoid pb-4 rounded shadow overflow-hidden bg-white"
+            className="break-inside-avoid rounded shadow overflow-hidden bg-white relative group"
           >
             <img
               src={gif.images.fixed_width.url}
               alt={gif.title}
               className="w-full h-auto bg-slate-600 rounded-md"
             />
+            {/* Details appear on hover */}
+            <div className="absolute inset-0 bg-black bg-opacity-70 text-white opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-center items-center p-4">
+              <div className="flex items-center gap-2 mb-2">
+                {gif.user?.avatar_url && (
+                  <img
+                    src={gif.user.avatar_url}
+                    alt={gif.user.display_name || gif.user.username}
+                    className="w-8 h-8 rounded-full border"
+                  />
+                )}
+                <span className="font-semibold">
+                  {gif.user?.display_name || gif.user?.username || "Unknown"}
+                </span>
+              </div>
+              <Link
+                href={gif.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-blue-200"
+              >
+                View on Giphy
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -86,7 +109,7 @@ export default function Trendings() {
           <div className="flex items-center justify-center min-h-screen w-full">
             <Loader2 />
           </div>
-        ) }
+        )}
         {!hasMore && (
           <span className="text-gray-500">No more GIFs to load.</span>
         )}
